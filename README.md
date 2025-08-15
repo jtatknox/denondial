@@ -21,13 +21,15 @@ This guide describes how to set up a Microsoft Surface Dial to control a Denon A
 
 Boot and log into your Pi Zero 2 W.
 
-```wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh
+```
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh
 bash Miniforge3-Linux-aarch64.sh
 ```
 
 Install Mamba inside the base environment:
 
-```conda install mamba -c conda-forge
+```
+conda install mamba -c conda-forge
 mamba install python=3.11 -c conda-forge
 mamba install asyncio serial time threading evdev -c conda-forge
 ```
@@ -36,7 +38,8 @@ mamba install asyncio serial time threading evdev -c conda-forge
 
 Put the Dial in pairing mode (hold the button until LED flashes). On the Pi:
 
-```bluetoothctl
+```
+bluetoothctl
 agent on
 default-agent
 scan on
@@ -54,7 +57,8 @@ Save denon_dial.py to /home/pi/denon_dial.py
 
 ## 4. Test the Script
 
-```python denon_dial.py
+```
+python denon_dial.py
 ```
 
 If it works, proceed to autostart.
@@ -63,7 +67,8 @@ If it works, proceed to autostart.
 
 Create a systemd service:
 
-```sudo nano /etc/systemd/system/surface_dial.service
+```
+sudo nano /etc/systemd/system/surface_dial.service
 ```
 
 Contents:
@@ -83,7 +88,8 @@ WantedBy=multi-user.target
 
 Enable and start:
 
-```sudo systemctl daemon-reload
+```
+sudo systemctl daemon-reload
 sudo systemctl enable surface_dial.service
 sudo systemctl start surface_dial.service
 ```
