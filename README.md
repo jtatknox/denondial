@@ -50,12 +50,11 @@ Replace XX:XX:XX:XX:XX:XX with your Dial’s MAC address.
 
 ## 3. Python Script
 
-Save your working Dial→Denon control script as surface_dial_denon.py.
-Example location: /home/pi/surface_dial_denon.py
+Save denon_dial.py to /home/pi/denon_dial.py
 
 ## 4. Test the Script
 
-```python surface_dial_denon.py
+```python denon_dial.py
 ```
 
 If it works, proceed to autostart.
@@ -76,7 +75,7 @@ After=bluetooth.target
 [Service]
 User=pi
 WorkingDirectory=/home/pi
-ExecStart=/home/pi/miniforge3/envs/dial/bin/python /home/pi/surface_dial_denon.py
+ExecStart=/home/pi/miniforge3/envs/dial/bin/python /home/pi/denon_dial.py
 Restart=always
 
 [Install]
